@@ -1,0 +1,20 @@
+{
+  "method": "stageuser_add",
+  "params": [
+    [
+      "$($ADUser.SamAccountName)"
+    ],
+    {
+      "givenname": "$($ADUser.GivenName)",
+      "sn": "$($ADUser.Surname)",
+      "cn": "$($ADUser.Name)",
+      "mail": "$($ADUser.mail)",
+      "title": "$($ADUser.title)",
+      "employeenumber": "$($ADUser.employeeNumber)",
+      "telephonenumber": "$($ADUser.telephoneNumber)",
+      "mobile": "$($ADUser.mobile)",
+      "departmentnumber": "$($ADUser.DistinguishedName -replace '.+?,OU=(.+?),(?:OU|DC)=.+','$1')",
+      "ou": "$($ADUser.department)"
+    }
+  ]
+}
